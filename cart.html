@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #meal{
+            width:100%;
+            height:550px;
+            border:1px solid black;
+        }
+        #count{
+            width:10%;
+            height:10%;
+            border:1px solid black
+        }
+    </style>
+</head>
+<body>
+    <input type="number" id="count">
+    <div id="meal"></div>
+</body>
+</html>
+<script>
+    // var meal_box=document.querySelector("meal")
+let get = JSON.parse(localStorage.getItem("Mealcart"))
+console.log(get);
+// function appendto(detail) {
+        get.forEach(({strMeal,strMealThumb,index}) => {
+            document.querySelector("#count").textContent=index+1;
+            let div = document.createElement("div")
+            let mname =document.createElement("p")
+            mname.textContent = strMeal
+
+            let img = document.createElement("img")
+            img.src = strMealThumb
+
+            let btn = document.createElement("button")
+
+            // var td5=document.createElement("button");
+            // td5.addEventListener('click',function(){
+            //     deleteRow(index)
+            // })
+            // td5.textContent="delete";
+
+            let price = document.createElement("p")
+            price.textContent ="Price : "  + Math.floor(Math.random() * 400)
+
+            div.append(img,mname,price)
+
+            document.querySelector("#meal").append(div)
+
+            
+
+        })
+    // }
+
+</script>
